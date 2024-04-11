@@ -5,73 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
-<body>
+<body class="pedido">
+    <a href="index.html"><img class="logo" src="./imgs/logo-rosa.png" alt="logo los cuadraditos">
+     </a>
     <div class="container">
-        <button onclick="window.location.href='index.html'">Voltar para a Página Inicial</button>
         <h1>Faça seu pedido de doces</h1>
         <h2>Receba <strong>amanhã</strong> o seu pedido ate as 13 hrs! </h2>
         <form id="pedido-form">
-            <label for="nome">Nome:</label>
+            <label class="nome" for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
 
             <fieldset>
-                <legend>Selecione os itens:</legend>
-                <label>
+                <legend class="nome">Selecione os itens:</legend>
+                <div><label class="item">
                     <input type="checkbox" name="item" value="brownie_chocolate" data-preco="10">
-                    <img src="brownie_chocolate.jpg" alt="Brownie de Chocolate" width="100">
+                    <img src="/imgs/chocolate.png" alt="Brownie de Chocolate" width="100">
                     Brownie de Chocolate - R$10
-                    <input type="number" name="quantidade_brownie_chocolate" min="0" value="0">
+                    <input type="number" class="numero-range" name="quantidade_brownie_chocolate" min="0" value="0" >
                 </label>
-                <label>
+                <label class="item">
                     <input type="checkbox" name="item" value="brownie_blond" data-preco="10">
-                    <img src="brownie_blond.jpg" alt="Brownie Blond" width="100">
+                    <img src="/imgs/brownie.png" alt="Brownie Blond" width="100">
                     Brownie Blond - R$10
-                    <input type="number" name="quantidade_brownie_blond" min="0" value="0">
+                    <input type="number" class="numero-range" name="quantidade_brownie_blond" min="0" value="0">
                 </label>
-                <label>
+                <label class="item">
                     <input type="checkbox" name="item" value="brownie_limao" data-preco="12">
-                    <img src="brownie_limao.jpg" alt="Brownie de Limão" width="100">
+                    <img src="/imgs/nut.png" alt="Brownie de Limão" width="100">
                     Brownie de Limão - R$12
-                    <input type="number" name="quantidade_brownie_limao" min="0" value="0">
+                    <input type="number" class="numero-range" name="quantidade_brownie_limao" min="0" value="0">
                 </label>
-                <label>
+                <label class="item">
                     <input type="checkbox" name="item" value="cookie_tradicional" data-preco="10">
-                    <img src="cookie_tradicional.jpg" alt="Cookie Tradicional" width="100">
+                    <img src="/imgs/brownie (1).png" alt="Cookie Tradicional" width="100">
                     Cookie Tradicional - R$10
-                    <input type="number" name="quantidade_cookie_tradicional" min="0" value="0">
+                    <input type="number" class="numero-range" name="quantidade_cookie_tradicional" min="0" value="0">
                 </label>
-                <label>
+                <label class="item">
                     <input type="checkbox" name="item" value="cookie_chocolate" data-preco="12">
-                    <img src="cookie_chocolate.jpg" alt="Cookie de Chocolate" width="100">
+                    <img src="/imgs/brownie2.png" alt="Cookie de Chocolate" width="100">
                     Cookie de Chocolate - R$12
-                    <input type="number" name="quantidade_cookie_chocolate" min="0" value="0">
+                    <input type="number" class="numero-range" name="quantidade_cookie_chocolate" min="0" value="0">
                 </label>
+            </div>
             </fieldset>
 
-            <label for="mensagem">Mensagem:</label>
+            <label class="nome" for="mensagem">Mensagem:</label>
             <textarea id="mensagem" name="mensagem" rows="4" cols="50" placeholder="Digite sua mensagem..."></textarea>
 
-            <label for="entrega">Deseja buscar ou receber em casa?</label>
+            <label class="nome" for="entrega">Deseja buscar ou receber em casa?</label>
             <select id="entrega" name="entrega" onchange="toggleEndereco()">
                 <option value="buscar">Buscar</option>
                 <option value="receber">Receber em casa</option>
             </select>
 
             <div id="endereco-input" style="display:none;">
-                <label for="endereco">Endereço:</label>
+                <label class="nome" for="endereco">Endereço:</label>
                 <input type="text" id="endereco" name="endereco">
             </div>
 
             <div id="cidade-input" style="display:none;">
-                <label for="cidade">Cidade:</label>
+                <label class="nome" for="cidade">Cidade:</label>
                 <select id="cidade" name="cidade" onchange="atualizarTaxaEntrega()">
                     <option value="olinda">Olinda</option>
                     <option value="recife">Recife</option>
                 </select>
             </div>
 
-            <label for="pagamento">Forma de pagamento:</label>
+            <label class="nome" for="pagamento">Forma de pagamento:</label>
             <select id="pagamento" name="pagamento" onchange="atualizarTotal()">
                 <option value="pix">Pix (10% de desconto)</option>
                 <option value="dinheiro">Dinheiro (10% de desconto)</option>
@@ -81,7 +84,7 @@
             <div>
                 <p id="desconto-info" style="font-style: italic; display: none;">* Desconto de 10% aplicado para pagamentos via Pix ou débito.</p>
                 <p id="taxa-entrega-info" style="font-style: italic; display: none;">* Taxa de entrega de R$8,00 para entregas em Recife.</p>
-                <p>Total: R$<span id="total">0</span></p>
+                <p class="nome">Total: R$<span id="total">0</span></p>
             </div>
 
             <button type="button" onclick="enviarPedido()">Enviar Pedido</button>

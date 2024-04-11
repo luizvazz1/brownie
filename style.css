@@ -35,7 +35,7 @@ div.decorar{
     margin: 0;
     width: 100%;
     align-self: flex-end;
-   height: 200px;
+    height: 120px;
     background-image: url(/imgs/RODAPE-INDEX.svg);
     background-repeat: no-repeat;
     background-size: cover;

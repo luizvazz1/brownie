@@ -1,0 +1,74 @@
+.pedido{
+    overflow: auto;
+}
+.pedido .container{
+margin: auto;
+background-color: #3c3cd6;
+
+}
+
+.pedido .logo{
+width: 260px;
+height: 151px;
+}
+.pedido .container h1{
+    color:#dd94d0 ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+}
+.pedido .container h2{
+    color:#dd94d0 ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+}
+.pedido .nome{
+    font-family: 'Giloroy-lighter';
+    font-weight: 600;
+    color: #dd94d0;
+    font-size: 2rem;
+}
+.pedido form img{
+    width: 80px;
+    height: 60px;
+}
+.pedido form label{
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+}
+.pedido fieldset, .pedido form{
+    border-color: #dd94d0;
+
+}
+.pedido fieldset>div label{
+    display: grid;
+    max-width: 600px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+.pedido fieldset .numero-range{
+    width: 60px;
+}
+.pedido .item{
+    color:orange ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+}
+/*fontesss*/
+@font-face {
+    font-family: "Atelier",sans-serif;
+    src: url(/fonts/Atelier.otf) format('opentype');
+}
+@font-face {
+    font-family:'Giloroy-bold' ;
+    src: url(/fonts/Gilroy-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Giloroy-regular' ;
+    src: url(/fonts/Gilroy-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Giloroy-lighter' ;
+    src: url(/fonts/Gilroy-Light.otf) format('opentype');
+   
+}
