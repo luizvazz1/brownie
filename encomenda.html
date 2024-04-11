@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      
+        <button onclick="window.location.href='index.html'">Voltar para a Página Inicial</button>
+        <!-- Restante do código da página de encomendas -->
+    </div>
+    <div class="container">
+        <h1>Encomendar Brownies e Cookies</h1>
+        <div class="produtos">
+            <h2>Brownies</h2>
+            <ul>
+                <li>
+                    <img src="brownie_chocolate.jpg" alt="Brownie de Chocolate" width="100">
+                    <p><strong>Brownie de Chocolate</strong> - Delicioso brownie de chocolate. Preço: R$10</p>
+                </li>
+                <li>
+                    <img src="brownie_blond.jpg" alt="Brownie Blond" width="100">
+                    <p><strong>Brownie Blond</strong> - Brownie blond feito com ingredientes especiais. Preço: R$10</p>
+                </li>
+                <li>
+                    <img src="brownie_limao.jpg" alt="Brownie de Limão" width="100">
+                    <p><strong>Brownie de Limão</strong> - Brownie refrescante com sabor de limão. Preço: R$12</p>
+                </li>
+            </ul>
+            <h2>Cookies</h2>
+            <ul>
+                <li>
+                    <img src="cookie_tradicional.jpg" alt="Cookie Tradicional" width="100">
+                    <p><strong>Cookie Tradicional</strong> - Cookie clássico e delicioso. Preço: R$10</p>
+                </li>
+                <li>
+                    <img src="cookie_chocolate.jpg" alt="Cookie de Chocolate" width="100">
+                    <p><strong>Cookie de Chocolate</strong> - Cookie com gotas de chocolate. Preço: R$12</p>
+                </li>
+            </ul>
+        </div>
+        <form id="encomenda-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="entrega">Deseja buscar ou receber em casa?</label>
+            <select id="entrega" name="entrega">
+                <option value="buscar">Buscar</option>
+                <option value="receber">Receber em casa</option>
+            </select>
+
+            <div id="endereco-input" style="display:none;">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco">
+            </div>
+
+            <label for="encomenda">Encomenda:</label>
+            <textarea id="encomenda" name="encomenda" rows="4" cols="50" placeholder="Digite a quantidade e tipo desejados..."></textarea>
+
+            <button type="button" onclick="enviarEncomenda()">Enviar Encomenda</button>
+            <p id="confirmacao-mensagem" style="display: none; color: green;">Aguarde a confirmação no WhatsApp.</p>
+        </form>
+    </div>
+
+    <script>
+        function enviarEncomenda() {
+            var nome = document.getElementById('nome').value;
+            var entrega = document.getElementById('entrega').value;
+            var endereco = '';
+            if (entrega === 'receber') {
+                endereco = document.getElementById('endereco').value;
+            }
+            var encomenda = document.getElementById('encomenda').value;
+
+            // Formatar a mensagem para o WhatsApp
+            var mensagem = "Encomenda de " + nome + ":\n";
+            mensagem += "Entrega: " + entrega + "\n";
+            if (entrega === 'receber') {
+                mensagem += "Endereço: " + endereco + "\n";
+            }
+            mensagem += "Encomenda:\n";
+            mensagem += encomenda + "\n";
+
+            // Transformar a mensagem em uma URL com codificação de URI
+            var mensagemURI = encodeURIComponent(mensagem);
+
+            // Construir o link para enviar a mensagem via WhatsApp
+            var linkWhatsApp = "https://wa.me/5581999770141?text=" + mensagemURI;
+
+            // Abrir o link em outra aba
+            window.open(linkWhatsApp);
+
+            // Exibir mensagem de confirmação
+            var confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+            confirmacaoMensagem.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

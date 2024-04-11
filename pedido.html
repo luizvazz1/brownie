@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='index.html'">Voltar para a Página Inicial</button>
+        <h1>Faça seu pedido de doces</h1>
+        <h2>Receba <strong>amanhã</strong> o seu pedido ate as 13 hrs! </h2>
+        <form id="pedido-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <fieldset>
+                <legend>Selecione os itens:</legend>
+                <label>
+                    <input type="checkbox" name="item" value="brownie_chocolate" data-preco="10">
+                    <img src="brownie_chocolate.jpg" alt="Brownie de Chocolate" width="100">
+                    Brownie de Chocolate - R$10
+                    <input type="number" name="quantidade_brownie_chocolate" min="0" value="0">
+                </label>
+                <label>
+                    <input type="checkbox" name="item" value="brownie_blond" data-preco="10">
+                    <img src="brownie_blond.jpg" alt="Brownie Blond" width="100">
+                    Brownie Blond - R$10
+                    <input type="number" name="quantidade_brownie_blond" min="0" value="0">
+                </label>
+                <label>
+                    <input type="checkbox" name="item" value="brownie_limao" data-preco="12">
+                    <img src="brownie_limao.jpg" alt="Brownie de Limão" width="100">
+                    Brownie de Limão - R$12
+                    <input type="number" name="quantidade_brownie_limao" min="0" value="0">
+                </label>
+                <label>
+                    <input type="checkbox" name="item" value="cookie_tradicional" data-preco="10">
+                    <img src="cookie_tradicional.jpg" alt="Cookie Tradicional" width="100">
+                    Cookie Tradicional - R$10
+                    <input type="number" name="quantidade_cookie_tradicional" min="0" value="0">
+                </label>
+                <label>
+                    <input type="checkbox" name="item" value="cookie_chocolate" data-preco="12">
+                    <img src="cookie_chocolate.jpg" alt="Cookie de Chocolate" width="100">
+                    Cookie de Chocolate - R$12
+                    <input type="number" name="quantidade_cookie_chocolate" min="0" value="0">
+                </label>
+            </fieldset>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="4" cols="50" placeholder="Digite sua mensagem..."></textarea>
+
+            <label for="entrega">Deseja buscar ou receber em casa?</label>
+            <select id="entrega" name="entrega" onchange="toggleEndereco()">
+                <option value="buscar">Buscar</option>
+                <option value="receber">Receber em casa</option>
+            </select>
+
+            <div id="endereco-input" style="display:none;">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco">
+            </div>
+
+            <div id="cidade-input" style="display:none;">
+                <label for="cidade">Cidade:</label>
+                <select id="cidade" name="cidade" onchange="atualizarTaxaEntrega()">
+                    <option value="olinda">Olinda</option>
+                    <option value="recife">Recife</option>
+                </select>
+            </div>
+
+            <label for="pagamento">Forma de pagamento:</label>
+            <select id="pagamento" name="pagamento" onchange="atualizarTotal()">
+                <option value="pix">Pix (10% de desconto)</option>
+                <option value="dinheiro">Dinheiro (10% de desconto)</option>
+                <option value="cartao">Cartão de Crédito/Débito</option>
+            </select>
+
+            <div>
+                <p id="desconto-info" style="font-style: italic; display: none;">* Desconto de 10% aplicado para pagamentos via Pix ou débito.</p>
+                <p id="taxa-entrega-info" style="font-style: italic; display: none;">* Taxa de entrega de R$8,00 para entregas em Recife.</p>
+                <p>Total: R$<span id="total">0</span></p>
+            </div>
+
+            <button type="button" onclick="enviarPedido()">Enviar Pedido</button>
+            <p id="confirmacao-mensagem" style="display: none; color: green;">Aguarde a confirmação no WhatsApp.</p>
+        </form>
+    </div>
+
+    <script>
+ 
+        function toggleEndereco() {
+            var entregaSelect = document.getElementById('entrega');
+            var enderecoInput = document.getElementById('endereco-input');
+            var cidadeInput = document.getElementById('cidade-input');
+            if (entregaSelect.value === 'receber') {
+                enderecoInput.style.display = 'block';
+                cidadeInput.style.display = 'block';
+            } else {
+                enderecoInput.style.display = 'none';
+                cidadeInput.style.display = 'none';
+            }
+        }
+
+        function calcularTotal() {
+            var total = 0;
+            var itens = document.getElementsByName('item');
+            for (var i = 0; i < itens.length; i++) {
+                if (itens[i].checked) {
+                    var quantidadeInput = document.getElementsByName('quantidade_' + itens[i].value)[0];
+                    var quantidade = parseInt(quantidadeInput.value);
+                    var preco = parseInt(itens[i].getAttribute('data-preco'));
+                    total += quantidade * preco;
+                }
+            }
+            return total;
+        }
+
+        function atualizarTotal() {
+            var total = calcularTotal();
+            var pagamentoSelect = document.getElementById('pagamento');
+            if (pagamentoSelect.value === 'pix' || pagamentoSelect.value === 'dinheiro') {
+                total -= total * 0.1; // Aplicando desconto de 10% se for Pix ou Dinheiro
+                document.getElementById('desconto-info').style.display = 'block';
+            } else {
+                document.getElementById('desconto-info').style.display = 'none';
+            }
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        function atualizarTaxaEntrega() {
+            var cidadeSelect = document.getElementById('cidade');
+            var taxaEntregaInfo = document.getElementById('taxa-entrega-info');
+            if (cidadeSelect.value === 'recife') {
+                taxaEntregaInfo.style.display = 'block';
+                var totalElement = document.getElementById('total');
+                var total = parseFloat(totalElement.textContent);
+                total += 8; // Adicionando taxa de entrega de R$8,00 para Recife
+                totalElement.textContent = total.toFixed(2);
+            } else {
+                taxaEntregaInfo.style.display = 'none';
+            }
+        }
+        function enviarPedido() {
+            // Seu código para enviar o pedido via WhatsApp aqui
+            var nome = document.getElementById('nome').value;
+            var pedido = [];
+            var itens = document.getElementsByName('item');
+            for (var i = 0; i < itens.length; i++) {
+                if (itens[i].checked) {
+                    var itemName = itens[i].value;
+                    var quantidadeInput = document.getElementsByName('quantidade_' + itemName)[0];
+                    var quantidade = parseInt(quantidadeInput.value);
+                    var preco = parseInt(itens[i].getAttribute('data-preco'));
+                    var subtotal = quantidade * preco;
+                    pedido.push(quantidade + "x " + itemName + " - R$" + subtotal);
+                }
+            }
+            var mensagem = document.getElementById('mensagem').value;
+            var entrega = document.getElementById('entrega').value;
+            var endereco = '';
+            var cidade = '';
+            if (entrega === 'receber') {
+                endereco = document.getElementById('endereco').value;
+                cidade = document.getElementById('cidade').value;
+            }
+            var pagamento = document.getElementById('pagamento').value;
+            var total = calcularTotal();
+            if (pagamento === 'pix' || pagamento === 'dinheiro') {
+                total -= total * 0.1; // Aplicando desconto de 10% se for Pix ou Dinheiro
+            }
+
+            // Adicionar taxa de entrega para Recife
+            if (cidade === 'recife') {
+                total += 8;
+            }
+
+            // Formatar o pedido para o WhatsApp
+            var mensagemPedido = "Pedido de " + nome + ":\n";
+            mensagemPedido += "Itens:\n";
+            mensagemPedido += pedido.join("\n") + "\n";
+            if (mensagem.trim() !== '') {
+                mensagemPedido += "Mensagem:\n";
+                mensagemPedido += mensagem.trim() + "\n";
+            }
+            mensagemPedido += "Entrega: " + entrega + "\n";
+            if (entrega === 'receber') {
+                mensagemPedido += "Endereço: " + endereco + "\n";
+                mensagemPedido += "Cidade: " + cidade + "\n";
+            }
+            mensagemPedido += "Forma de pagamento: " + pagamento + "\n";
+            mensagemPedido += "Total: R$" + total.toFixed(2);
+            mensagemPedido += "\n\nObrigado pela escolha, aguarde a confirmação do pedido no WhatsApp :D";
+
+            // Transformar a mensagem em uma URL com codificação de URI
+            var mensagemURI = encodeURIComponent(mensagemPedido);
+
+            // Construir o link para enviar a mensagem via WhatsApp
+            var linkWhatsApp = "https://wa.me/5581999770141?text=" + mensagemURI;
+
+            // Abrir o link em outra aba
+            window.open(linkWhatsApp);
+
+            // Exibir mensagem de confirmação
+            var confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+            confirmacaoMensagem.style.display = 'block';
+        }
+      
+            
+        
+    </script>
+</body>
+</html>

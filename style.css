@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 250px 250px 1fr 1fr;
+    justify-items: center;
+    background-image:url(/imgs/index.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #D5481E;
+    height: 100vh;
+    align-items: center;
+    overflow: hidden;
+}
+p{
+    font-size: 2rem;
+    color: #F1EBDA;
+    font-family:'Giloroy-lighter',sans-serif,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.logo{
+    grid-row: 1;
+}
+
+div.decorar{
+    grid-row: -1;
+    margin: 0;
+    width: 100%;
+    align-self: flex-end;
+   height: 200px;
+    background-image: url(/imgs/RODAPE-INDEX.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+div.conteudo{
+    margin-top: 160px;
+    grid-area: 'conteudo';
+    /* align-items: start; */
+}
+div.logo{
+    position: relative;
+}
+
+h1,h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+}
+
+li {
+    margin-bottom: 10px;    
+    font-family: "Atelier",sans-serif;
+    text-align: center;
+    background-color: #F1EBDA;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0 20px 0 20px;
+    box-shadow: 0  4px 4px 0 #D5481E;
+    border: inset 4px transparent;
+   
+}
+li:hover{
+    box-shadow: 0  4px 4px 0 rgb(0, 0, 0,0.5);
+    border: inset 4px #3C3CD6;
+}
+
+
+a {
+    text-decoration: none;
+}
+a.link{
+    color: #3C3CD6;
+    font-size: 2rem;
+    padding: .5rem 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+a.link::before{
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(/imgs/asteristico.svg);
+    position: absolute;
+    z-index: -1;
+    left: 14px;
+}
+
+img{
+    height: max-content;
+    width: 100%;
+}
+
+
+
+/* Estilos específicos para o formulário de encomendas */
+form {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+select {
+    width: calc(100% - 18px); /* Considerando o espaço ocupado pela seta */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+/*fontesss*/
+@font-face {
+    font-family: "Atelier",sans-serif;
+    src: url(/fonts/Atelier.otf) format('opentype');
+}
+@font-face {
+    font-family:'Giloroy-bold',sans-serif ;
+    src: url(/fonts/Gilroy-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Giloroy-regular',sans-serif ;
+    src: url(/fonts/Gilroy-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Giloroy-lighter',sans-serif ;
+    src: url(/fonts/Gilroy-Light.otf) format('opentype');
+   
+}
