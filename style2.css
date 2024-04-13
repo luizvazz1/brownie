@@ -1,0 +1,24 @@
+.encomenda{
+    overflow: auto;
+}
+.encomenda .container{
+    margin: auto;
+    background-color: #3c3cd6;
+    
+    }
+.encomenda h1,h2{
+    color:#dd94d0 ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+}
+.encomenda li {
+    font-size: 1.5rem;
+}
+.encomenda form label{
+    color:#dd94d0 ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+}
+.encomenda form{
+    border-color: #dd94d0   ;
+}

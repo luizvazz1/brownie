@@ -22,7 +22,7 @@ height: 151px;
     letter-spacing: 0.2rem;
 }
 .pedido .nome{
-    font-family: 'Giloroy-lighter';
+ 
     font-weight: 600;
     color: #dd94d0;
     font-size: 2rem;
@@ -32,18 +32,23 @@ height: 151px;
     height: 60px;
 }
 .pedido form label{
+    margin: 2rem 0 1rem 0;
     display: flex;
     align-items: center;
    justify-content: space-between;
+   
 }
 .pedido fieldset, .pedido form{
     border-color: #dd94d0;
 
 }
 .pedido fieldset>div label{
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
     max-width: 600px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+
+
     
 }
 .pedido fieldset .numero-range{

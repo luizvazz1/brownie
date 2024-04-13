@@ -165,3 +165,14 @@ button:hover {
     src: url(/fonts/Gilroy-Light.otf) format('opentype');
    
 }
+
+button{
+    color:#dd94d0 ;
+    font-family: "Atelier",sans-serif;
+    letter-spacing: 0.2rem;
+    background-color: #f0c6e8;
+}
+ button:hover{
+    background-color: #dd94d0 ;
+    color: #3c3cd6;
+}

@@ -20,50 +20,45 @@
             <fieldset>
                 <legend class="nome">Selecione os itens:</legend>
                 <div><label class="item">
-                    <input type="checkbox" name="item" value="brownie_chocolate" data-preco="10">
-                    <img src="/imgs/chocolate.png" alt="Brownie de Chocolate" width="100">
-                    Brownie de Chocolate - R$10
+                    <input type="checkbox" name="item" value="brownie_chocolate" data-preco="10" >
+                              Brownie de Chocolate - R$10
                     <input type="number" class="numero-range" name="quantidade_brownie_chocolate" min="0" value="0" >
                 </label>
                 <label class="item">
                     <input type="checkbox" name="item" value="brownie_blond" data-preco="10">
-                    <img src="/imgs/brownie.png" alt="Brownie Blond" width="100">
-                    Brownie Blond - R$10
+                     Brownie Blond - R$10
                     <input type="number" class="numero-range" name="quantidade_brownie_blond" min="0" value="0">
                 </label>
                 <label class="item">
                     <input type="checkbox" name="item" value="brownie_limao" data-preco="12">
-                    <img src="/imgs/nut.png" alt="Brownie de Limão" width="100">
                     Brownie de Limão - R$12
                     <input type="number" class="numero-range" name="quantidade_brownie_limao" min="0" value="0">
                 </label>
                 <label class="item">
                     <input type="checkbox" name="item" value="cookie_tradicional" data-preco="10">
-                    <img src="/imgs/brownie (1).png" alt="Cookie Tradicional" width="100">
-                    Cookie Tradicional - R$10
+                              Cookie Tradicional - R$10
                     <input type="number" class="numero-range" name="quantidade_cookie_tradicional" min="0" value="0">
                 </label>
                 <label class="item">
                     <input type="checkbox" name="item" value="cookie_chocolate" data-preco="12">
-                    <img src="/imgs/brownie2.png" alt="Cookie de Chocolate" width="100">
-                    Cookie de Chocolate - R$12
+                            Cookie de Chocolate - R$12
                     <input type="number" class="numero-range" name="quantidade_cookie_chocolate" min="0" value="0">
                 </label>
             </div>
             </fieldset>
-
-            <label class="nome" for="mensagem">Mensagem:</label>
+            
+            <label class="nome" for="mensagem" >Mensagem:</label>
             <textarea id="mensagem" name="mensagem" rows="4" cols="50" placeholder="Digite sua mensagem..."></textarea>
 
             <label class="nome" for="entrega">Deseja buscar ou receber em casa?</label>
-            <select id="entrega" name="entrega" onchange="toggleEndereco()">
+            <select id="entrega" name="entrega"  onchange="toggleEndereco()">
                 <option value="buscar">Buscar</option>
                 <option value="receber">Receber em casa</option>
             </select>
 
             <div id="endereco-input" style="display:none;">
-                <label class="nome" for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco">
+                <label class="nome" for="endereco" >Endereço:</label>
+                <input type="text" id="endereco" name="endereco" placeholder="EX: RUA ALMEIDA BELO N 253">
             </div>
 
             <div id="cidade-input" style="display:none;">
